@@ -1,5 +1,5 @@
 FR-8.3 — C2 Command Injection / Spoofing Demo
-Generated  : 2026-10-09T08:23:59.401Z
+Generated  : 2026-10-09T09:36:52.151Z
 Script     : attacker/c2_spoof_selftest.py  (loopback; no live VM required)
 Purpose    : Demonstrate that the naive C2 variant accepts unsigned commands
              while the HMAC-authenticated variant rejects them.

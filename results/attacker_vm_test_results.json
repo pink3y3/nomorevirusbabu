@@ -1,0 +1,45 @@
+{
+  "generated_at_utc": "2026-10-09T09:36:53.226164+00:00",
+  "results": [
+    {
+      "test": "1. RSA key files present",
+      "status": "PASS",
+      "detail": "public.pem 451B, private.pem 1675B"
+    },
+    {
+      "test": "2. HMAC sign/verify round-trip",
+      "status": "PASS",
+      "detail": "sign/verify round-trip OK; tamper and unsigned both rejected"
+    },
+    {
+      "test": "3. AES-256-CBC encrypt/decrypt",
+      "status": "PASS",
+      "detail": "AES-256-CBC encrypt/decrypt OK, 2500 \u2192 2512 bytes"
+    },
+    {
+      "test": "4. RSA-2048-OAEP wrap/unwrap",
+      "status": "PASS",
+      "detail": "RSA-2048-OAEP wrap/unwrap round-trip OK"
+    },
+    {
+      "test": "5. C2 loopback \u2014 naive variant",
+      "status": "PASS",
+      "detail": "Naive C2 loopback received ACK: STOP"
+    },
+    {
+      "test": "6. C2 loopback \u2014 authenticated",
+      "status": "PASS",
+      "detail": "Authenticated C2 loopback received ACK: STOP (signed command)"
+    },
+    {
+      "test": "7. FR-8.3 spoofing self-test",
+      "status": "PASS",
+      "detail": "FR-8.3 spoofing demo: naive=ACCEPTED, HMAC=REJECTED \u2713"
+    },
+    {
+      "test": "8. Transfer receiver loopback",
+      "status": "PASS",
+      "detail": "Loopback: 2 files sent + verified byte-for-byte (correct protocol)"
+    }
+  ]
+}
