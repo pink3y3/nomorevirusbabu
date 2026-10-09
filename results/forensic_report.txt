@@ -1,0 +1,127 @@
+=================================================================
+  IS Lab Ransomware Kill-Chain — Forensic Incident Report
+  Generated : 2026-10-09T09:02:20.084Z
+=================================================================
+
+─────────────────────────────────────────────────────────────────
+  1. Attack Timeline
+─────────────────────────────────────────────────────────────────
+  2026-10-09T08:17:23.887Z  [transfer    ]  benchmark_starting
+      side: victim
+      mode: loopback
+      port: 9998
+  2026-10-09T08:17:23.936Z  [transfer    ]  connected
+      side: victim
+      attacker_ip: 127.0.0.1
+      port: 9998
+  2026-10-09T08:17:23.958Z  [transfer    ]  file_sent
+      side: victim
+      filename: sample_text.txt
+      plaintext_bytes: 50000
+      encrypted_bytes: 50016
+      elapsed_ms: 21.19
+      throughput_mbps: 2.3594
+  2026-10-09T08:17:23.960Z  [transfer    ]  file_sent
+      side: victim
+      filename: sample_image.jpg
+      plaintext_bytes: 500000
+      encrypted_bytes: 500016
+      elapsed_ms: 1.79
+      throughput_mbps: 279.0031
+  2026-10-09T08:17:23.967Z  [transfer    ]  file_sent
+      side: victim
+      filename: sample_audio.mp3
+      plaintext_bytes: 2000000
+      encrypted_bytes: 2000016
+      elapsed_ms: 6.2
+      throughput_mbps: 322.4653
+  2026-10-09T08:17:24.321Z  [transfer    ]  file_sent
+      side: victim
+      filename: sample_video.mp4
+      plaintext_bytes: 10000000
+      encrypted_bytes: 10000016
+      elapsed_ms: 354.19
+      throughput_mbps: 28.2333
+  2026-10-09T08:17:24.591Z  [transfer    ]  benchmark_complete
+      side: victim
+      files: 4
+      verified: True
+      output: results/transfer_benchmarks.json
+
+─────────────────────────────────────────────────────────────────
+  2. Indicators of Compromise (IOCs)
+─────────────────────────────────────────────────────────────────
+
+  [NETWORK]
+    type: attacker_ip
+    value: 192.168.56.10
+    ports: {'c2': 9001, 'exfil': 9002}
+    note: Host-only network; no internet exposure in this simulation
+
+    type: exfiltration_event
+    ts: 2026-10-09T08:17:23.958Z
+    file: None
+    bytes: None
+    throughput_mbps: 2.3594
+
+    type: exfiltration_event
+    ts: 2026-10-09T08:17:23.960Z
+    file: None
+    bytes: None
+    throughput_mbps: 279.0031
+
+    type: exfiltration_event
+    ts: 2026-10-09T08:17:23.967Z
+    file: None
+    bytes: None
+    throughput_mbps: 322.4653
+
+    type: exfiltration_event
+    ts: 2026-10-09T08:17:24.321Z
+    file: None
+    bytes: None
+    throughput_mbps: 28.2333
+
+
+  [FILESYSTEM]
+    type: encrypted_extension
+    value: .locked
+
+    type: key_sidecar_extension
+    value: .key
+    note: 16-byte IV || 256-byte RSA-wrapped AES key
+
+    type: ransom_note_filename
+    value: README_DECRYPT.txt
+
+
+  [PROCESS]
+
+  [CRYPTOGRAPHIC]
+    type: rsa_public_key_fingerprint_sha256_prefix
+    value: 13aa70c3a35f437a
+    path: /home/shet_anirudh/ISL_LAB_PROJECT/Lab_Proj/nomorevirusbabu/keys/public.pem
+    note: RSA-2048-OAEP; private key is attacker-side only
+
+
+─────────────────────────────────────────────────────────────────
+  3. Detection Method Comparison
+─────────────────────────────────────────────────────────────────
+
+  Method: Honeypot Tripwire (A_COMMAND_ARCHIVE/)
+    latency                 : N/A (no events in logs)
+    false_positive_rate     : Very low (only fires on honeypot directory access)
+    catches                 : Ransomware traversal order; any file-system event in decoy dir
+    misses                  : Ransomware that skips or is aware of the honeypot dir
+    response_action         : Automatic SIGKILL of simulator + optional NIC isolation
+
+  Method: Traffic Analysis (PCAP / exfiltration heuristic)
+    latency                 : Seconds–minutes (post-capture analysis)
+    false_positive_rate     : Medium (large encrypted transfers may legitimately occur)
+    catches                 : Data exfiltration before encryption; C2 channel IPs/ports
+    misses                  : Local-only encryption with no exfiltration
+    response_action         : Manual investigation; no automatic containment in this simulation
+
+=================================================================
+  END OF REPORT
+=================================================================

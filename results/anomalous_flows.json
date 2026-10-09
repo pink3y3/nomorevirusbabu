@@ -1,0 +1,20 @@
+{
+  "attacker_ip": "192.168.56.10",
+  "exfil_port": 9002,
+  "threshold_bytes": 50000,
+  "anomalous_flows": [
+    {
+      "id": 1,
+      "src_ip": "192.168.56.20",
+      "dst_ip": "192.168.56.10",
+      "src_port": 54321,
+      "dst_port": 9002,
+      "protocol": "TCP",
+      "packet_count": 120,
+      "total_bytes": 4200000,
+      "start_time": "2026-10-09T09:02:09.462761+00:00",
+      "end_time": "2026-10-09T09:02:09.462761+00:00",
+      "flagged": 1
+    }
+  ]
+}
