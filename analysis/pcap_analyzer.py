@@ -1,3 +1,4 @@
+
 import argparse
 import json
 from collections import Counter
@@ -88,10 +89,6 @@ def analyze_pcap(pcap_path):
     }
 
 
-# Alias for compatibility with project spec
-parse_pcap = analyze_pcap
-
-
 def main():
     parser = argparse.ArgumentParser(
         description="Extract basic forensic metadata from a PCAP/PCAPNG file."
@@ -99,7 +96,7 @@ def main():
     parser.add_argument("pcap", help="Path to the capture file")
     parser.add_argument(
         "--output",
-        default="analysis/outputs/pcap_analysis.json",
+        default="person3/outputs/pcap_analysis.json",
         help="Path for the JSON output",
     )
     args = parser.parse_args()
