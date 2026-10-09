@@ -138,7 +138,10 @@ def generate_dataset(base_dir: str | Path) -> dict:
         for idx, (name, kind) in enumerate(mapping.items()):
             p = data_dir / folder / name
             p.parent.mkdir(parents=True, exist_ok=True)
-            WRITERS[kind](p, SEED + idx + len(folder))
+            if kind == "docx":
+                WRITERS[kind](p, p.stem.replace("_", " "), SEED + idx + len(folder))
+            else:
+                WRITERS[kind](p, SEED + idx + len(folder))
             generated.append(p)
     for idx, (name, kind) in enumerate(DECOYS.items()):
         p = data_dir / "A_COMMAND_ARCHIVE" / name
