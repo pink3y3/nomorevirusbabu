@@ -1,0 +1,45 @@
+FR-8.3 — C2 Command Injection / Spoofing Demo
+Generated  : 2026-10-09T08:23:59.401Z
+Script     : attacker/c2_spoof_selftest.py  (loopback; no live VM required)
+Purpose    : Demonstrate that the naive C2 variant accepts unsigned commands
+             while the HMAC-authenticated variant rejects them.
+
+Methodology:
+  A minimal in-process C2 server is started on 127.0.0.1:19001.
+  A simulated third-party attacker connects and injects an unsigned STOP
+  command (without valid HMAC-SHA256 signature).
+  Test is repeated for both AUTH_MODE=False (naive) and AUTH_MODE=True.
+
+============================================================
+  Scenario: NAIVE (unauthenticated)
+  Injecting unsigned STOP command to 127.0.0.1:19001
+============================================================
+  Server banner  : READY|NOAUTH
+  Injecting      : STOP  (no HMAC signature)
+  Server response: ACK: STOP
+
+  [RESULT] NAIVE variant CONFIRMED: unsigned command ACCEPTED ✓
+  → A third party successfully injected 'STOP' with no authentication.
+    This halts the legitimate operator's attack — C2 is spoofable.
+
+============================================================
+  Scenario: AUTHENTICATED (HMAC-SHA256)
+  Injecting unsigned STOP command to 127.0.0.1:19001
+============================================================
+  Server banner  : READY|AUTH
+  Injecting      : STOP  (no HMAC signature)
+  Server response: ERR: authentication failed
+
+  [RESULT] HMAC variant CONFIRMED: unsigned command REJECTED ✓
+  → HMAC-SHA256 authentication blocked the forged command.
+    The legitimate operator's attack continues unimpeded.
+
+============================================================
+  Summary
+============================================================
+  Naive variant    : STOP accepted  → attack halted by spoofing  ✗
+  HMAC variant     : STOP rejected  → HMAC prevents injection   ✓
+
+  Conclusion: HMAC-SHA256 authentication (AUTH_MODE=True) defeats
+  the command injection attack demonstrated against AUTH_MODE=False.
+============================================================

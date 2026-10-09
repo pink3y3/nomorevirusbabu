@@ -1,0 +1,16 @@
+{"ts": "2026-10-09T14:32:00.001Z", "module": "c2", "event": "server_starting", "host": "192.168.56.10", "port": 9001, "variant": "AUTHENTICATED (HMAC-SHA256)"}
+{"ts": "2026-10-09T14:32:00.002Z", "module": "c2", "event": "server_listening", "host": "192.168.56.10", "port": 9001}
+{"ts": "2026-10-09T14:32:01.001Z", "module": "c2", "event": "connection_accepted", "peer": "192.168.56.20:54312", "auth_mode": true}
+{"ts": "2026-10-09T14:32:01.115Z", "module": "c2", "event": "auth_accepted", "peer": "192.168.56.20:54312"}
+{"ts": "2026-10-09T14:32:01.123Z", "module": "c2", "event": "command_received", "cmd": "PUSH_KEY", "peer": "192.168.56.20:54312", "auth": true}
+{"ts": "2026-10-09T14:32:01.124Z", "module": "c2", "event": "push_key_received", "key_path": "/home/kali/islab-project/keys/public.pem"}
+{"ts": "2026-10-09T14:32:05.001Z", "module": "c2", "event": "auth_accepted", "peer": "192.168.56.20:54312"}
+{"ts": "2026-10-09T14:32:05.002Z", "module": "c2", "event": "command_received", "cmd": "START_EXFIL", "peer": "192.168.56.20:54312", "auth": true}
+{"ts": "2026-10-09T14:32:05.003Z", "module": "c2", "event": "start_exfil_triggered"}
+{"ts": "2026-10-09T14:32:45.001Z", "module": "c2", "event": "auth_accepted", "peer": "192.168.56.20:54312"}
+{"ts": "2026-10-09T14:32:45.002Z", "module": "c2", "event": "command_received", "cmd": "START_ENCRYPT", "peer": "192.168.56.20:54312", "auth": true}
+{"ts": "2026-10-09T14:32:45.003Z", "module": "c2", "event": "start_encrypt_triggered"}
+{"ts": "2026-10-09T14:34:12.001Z", "module": "c2", "event": "auth_accepted", "peer": "192.168.56.20:54312"}
+{"ts": "2026-10-09T14:34:12.002Z", "module": "c2", "event": "command_received", "cmd": "STOP", "peer": "192.168.56.20:54312", "auth": true}
+{"ts": "2026-10-09T14:34:12.003Z", "module": "c2", "event": "stop_received"}
+{"ts": "2026-10-09T14:34:12.100Z", "module": "c2", "event": "connection_closed", "peer": "192.168.56.20:54312"}

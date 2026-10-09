@@ -1,0 +1,19 @@
+# ── Private key material (attacker-side only — NEVER commit these) ────────────
+keys/private.pem
+keys/backup.key
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ── Log output (auto-generated) ───────────────────────────────────────────────
+logs/
+# Exception: *.sample files are format references for Person 3 — commit them
+!logs/*.sample
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/

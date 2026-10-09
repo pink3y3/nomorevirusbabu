@@ -1,0 +1,37 @@
+{
+  "aes": {
+    "text": {
+      "size_bytes": 50000,
+      "encrypt_ms": 0.2604,
+      "decrypt_ms": 0.0701,
+      "encrypt_throughput_mbps": 192.0064,
+      "decrypt_throughput_mbps": 712.921
+    },
+    "image": {
+      "size_bytes": 500000,
+      "encrypt_ms": 0.9241,
+      "decrypt_ms": 0.2953,
+      "encrypt_throughput_mbps": 541.06,
+      "decrypt_throughput_mbps": 1692.9297
+    },
+    "audio": {
+      "size_bytes": 2000000,
+      "encrypt_ms": 3.9116,
+      "decrypt_ms": 1.5962,
+      "encrypt_throughput_mbps": 511.2942,
+      "decrypt_throughput_mbps": 1252.9774
+    },
+    "video": {
+      "size_bytes": 10000000,
+      "encrypt_ms": 22.5917,
+      "decrypt_ms": 8.4742,
+      "encrypt_throughput_mbps": 442.6398,
+      "decrypt_throughput_mbps": 1180.057
+    }
+  },
+  "rsa": {
+    "rsa_wrap_avg_ms": 0.5815,
+    "rsa_unwrap_avg_ms": 35.3117,
+    "iterations": 10
+  }
+}

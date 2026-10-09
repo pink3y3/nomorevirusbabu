@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "mode": "loopback",
+    "timestamp": "2026-10-09T08:17:24.590Z",
+    "total_files": 4,
+    "note": "loopback = localhost test; live = real VM transfer"
+  },
+  "files": [
+    {
+      "filename": "sample_text.txt",
+      "media_type": "txt",
+      "size_mb": 0.0477,
+      "time_s": 0.021192,
+      "throughput_mbps": 2.3594,
+      "plaintext_bytes": 50000,
+      "encrypted_bytes": 50016,
+      "elapsed_ms": 21.19
+    },
+    {
+      "filename": "sample_image.jpg",
+      "media_type": "jpg",
+      "size_mb": 0.4768,
+      "time_s": 0.001792,
+      "throughput_mbps": 279.0031,
+      "plaintext_bytes": 500000,
+      "encrypted_bytes": 500016,
+      "elapsed_ms": 1.79
+    },
+    {
+      "filename": "sample_audio.mp3",
+      "media_type": "mp3",
+      "size_mb": 1.9073,
+      "time_s": 0.006202,
+      "throughput_mbps": 322.4653,
+      "plaintext_bytes": 2000000,
+      "encrypted_bytes": 2000016,
+      "elapsed_ms": 6.2
+    },
+    {
+      "filename": "sample_video.mp4",
+      "media_type": "mp4",
+      "size_mb": 9.5367,
+      "time_s": 0.354192,
+      "throughput_mbps": 28.2333,
+      "plaintext_bytes": 10000000,
+      "encrypted_bytes": 10000016,
+      "elapsed_ms": 354.19
+    }
+  ]
+}
